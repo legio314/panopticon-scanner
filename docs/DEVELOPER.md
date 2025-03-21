@@ -17,7 +17,7 @@ This guide provides comprehensive information for developers who want to contrib
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/panopticon-scanner.git
+   git clone https://github.com/legio314/panopticon-scanner.git
    cd panopticon-scanner
    ```
 
@@ -262,4 +262,4 @@ Use Chrome DevTools with the React DevTools extension for frontend profiling.
 - [React Documentation](https://reactjs.org/docs/getting-started.html)
 - [Electron Documentation](https://www.electronjs.org/docs)
 - [SQLite Documentation](https://www.sqlite.org/docs.html)
-- [Project Wiki](https://github.com/yourusername/panopticon-scanner/wiki)
+- [Project Wiki](https://github.com/legio314/panopticon-scanner/wiki)

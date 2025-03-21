@@ -1,8 +1,8 @@
 # Panopticon Scanner
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/panopticon-scanner)](https://goreportcard.com/report/github.com/yourusername/panopticon-scanner)
-[![License](https://img.shields.io/github/license/yourusername/panopticon-scanner)](https://github.com/yourusername/panopticon-scanner/blob/master/LICENSE)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/yourusername/panopticon-scanner)](https://golang.org/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/legio314/panopticon-scanner)](https://goreportcard.com/report/github.com/legio314/panopticon-scanner)
+[![License](https://img.shields.io/github/license/legio314/panopticon-scanner)](https://github.com/legio314/panopticon-scanner/blob/master/LICENSE)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/legio314/panopticon-scanner)](https://golang.org/)
 
 Panopticon Scanner is a comprehensive network scanning and monitoring solution designed for Linux environments. It provides automated discovery, monitoring, and analysis of network devices with an intuitive user interface.
 
@@ -49,7 +49,7 @@ Panopticon Scanner is a comprehensive network scanning and monitoring solution d
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/panopticon-scanner.git
+git clone https://github.com/legio314/panopticon-scanner.git
 cd panopticon-scanner
 
 # Run the installation script

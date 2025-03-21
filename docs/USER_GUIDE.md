@@ -17,7 +17,7 @@ Panopticon Scanner is a comprehensive network scanning and monitoring solution d
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/panopticon-scanner.git
+   git clone https://github.com/legio314/panopticon-scanner.git
    ```
 
 2. Run the installation script:

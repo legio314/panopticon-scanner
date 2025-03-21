@@ -24,7 +24,7 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md) to foster an in
 
 ### Before You Start
 
-1. Check the [issue tracker](https://github.com/yourusername/panopticon-scanner/issues) for existing issues or feature requests related to your contribution
+1. Check the [issue tracker](https://github.com/legio314/panopticon-scanner/issues) for existing issues or feature requests related to your contribution
 2. If no relevant issue exists, consider creating one to discuss your proposed changes before starting work
 3. For significant changes, discuss your approach with the maintainers first
 
@@ -82,7 +82,7 @@ Fixes #123
 
 1. **Update your fork** with the latest changes from the upstream repository:
    ```bash
-   git remote add upstream https://github.com/yourusername/panopticon-scanner.git
+   git remote add upstream https://github.com/legio314/panopticon-scanner.git
    git fetch upstream
    git rebase upstream/master
    ```
