@@ -1,0 +1,231 @@
+I'll update the requirements to include performance profiling and specify Linux-only support:
+
+# Enhanced Network Scanner Application Requirements
+
+## 1. Environment & Performance Requirements
+- **Platform**: Linux distributions (Ubuntu 20.04+, Debian 11+, Fedora 34+) for both server and client components
+- **Resource Usage**: Application must be efficient and mindful of resource consumption
+- **Operation**: Components must run independently and only when required
+- **System Impact**: Application must remain responsive even during intensive operations
+- **Startup Behavior**: Show loading screen or startup sequence immediately upon launch
+- **Progress Indication**: Clearly communicate initialization progress to users
+
+## 2. Architecture Requirements
+- **Modularity**: The application must be designed with highly modular components
+- **Extensibility**: New features should be addable without modifying existing components
+- **Installation/Updates**: Combined installation/update script that pulls latest version from GitHub repository
+- **Version Control**: Track and verify installed versions during updates
+- **Open Source**: Architecture and documentation suitable for public open source project
+- **Dependency Management**: Minimize external dependencies and document all requirements
+- **Linux Integration**: Proper integration with Linux system services and standards
+
+## 3. Database Requirements
+- **Database Engine**: SQLite to minimize file count
+- **Data Deduplication**: Implement mechanisms to avoid duplicate data
+- **Optimization**: Daily database defragmentation
+- **Time Handling**: Round timestamps to the nearest hour to assist with deduplication
+- **Data Retention**: Store data for at least 2 years
+- **Backup**: Weekly local backups of the database
+- **Compression**: Implement data compression for stored results where performance impact is acceptable
+- **Metrics**: Track and report on database size and query performance
+- **Health Diagnostics**:
+  - Regular integrity checks of database structure
+  - Automated detection and repair of corruption
+  - Performance metrics tracking for slow queries
+  - Database fragmentation monitoring
+  - Storage space monitoring with alerts
+
+## 4. Logging Requirements
+- **Format**: Structured JSON format for all logs
+- **Log Levels**:
+  - Info: Minimal operational information
+  - Error: Medium detail for issues
+  - Debug: Comprehensive information for troubleshooting
+- **Log Size**: Maximum 2GB total log size
+- **Log Management**: Implement rotation to maintain size limits
+- **Log Access**: View and search logs through Electron client interface
+- **Log Analysis**: Basic tools for filtering and analyzing log data
+- **System Integration**: Optional integration with journald/syslog
+
+## 5. Configuration Requirements
+- **Format**: YAML configuration file
+- **Settings**: Include scan frequency, network parameters, paths, credentials
+- **Live Configuration**: Support for configuration changes without restarting the application
+- **Hot Reload**: Apply configuration changes while the application is running
+- **Validation**: Verify and validate configuration changes before applying
+- **Custom Scan Templates**: Support user-defined scan profiles and templates in configuration
+- **Default Profiles**: Include set of optimized default scan templates
+- **Linux Paths**: Adhere to Linux filesystem hierarchy standards for configuration storage
+
+## 6. Error Handling Requirements
+
+Non-Critical Errors: Log the error and show notification in the Electron UI
+Critical Errors: Log detailed information, trigger database backup, and restart affected components
+Recovery: Automated recovery procedures for common failure scenarios
+User Feedback: Clear error messages with suggested actions for resolution
+
+## 7. Core Functionality Requirements
+
+### 7.1 Network Scanning Service
+
+Tool: Use nmap for network scanning
+Schedule: Run at configurable intervals (default: hourly)
+Parameters: Scan all possible ports, disable ping, implement rate limiting to prevent network saturation
+Custom Templates: Support for user-defined scan templates and profiles
+Output: Generate compressed XML output files and store results in database
+Scan Types: Support for different scan types (quick, thorough, stealth, etc.)
+
+### 7.2 Data Processing
+
+Input: Parse the nmap XML output files
+Compression: Compress data where appropriate without significant performance impact
+Data Fields: Extract and store:
+- IP address
+- MAC address
+- Open ports
+- Services detected
+- First seen timestamp
+- Last seen timestamp
+- Windows NetBIOS name
+- OS fingerprinting results
+
+Analysis: Basic trend analysis and change detection
+
+### 7.3 Electron Client Application
+
+Immediate Feedback: Show startup screen immediately upon launch
+Authentication: User authentication if configured
+Features:
+- Data filtering and sorting capabilities
+- Data visualization (charts/graphs)
+- Notification system for errors and events
+- Live configuration management
+- Custom scan template creation interface
+- Scan history and results comparison
+- Dark mode support
+- Colorblindness visual mode
+- Adjustable font size
+
+Responsive Design: Maintain usability during scanning operations
+Background Operation: Option to minimize to system tray
+Linux Desktop Integration: Proper integration with Linux desktop environments
+
+### 7.4 Report Generation
+
+Format Options: Generate reports in PDF, HTML, and CSV formats
+Report Types:
+- Network inventory reports
+- Change detection reports
+- Vulnerability summary reports
+- Open port analysis
+- Service discovery reports
+- Compliance reporting templates (GDPR, HIPAA, etc.)
+
+Customization: Templates for custom report layouts
+Scheduling: Automated report generation on schedule
+Distribution: Options to save locally or email reports
+Branding: Basic customization of report appearance
+Evidence Collection: Tools for capturing and preserving data for security audits
+
+## 8. Maintenance Requirements
+
+Database Maintenance: Daily defragmentation and optimization
+Backups: Weekly local backups with compression
+Resource Monitoring: Track and manage system resource usage
+Update System: Integrated update mechanism using GitHub repository
+Cleanup: Routine cleanup of temporary files and old logs
+Data Retention: Configurable data retention periods within the config file
+
+## 9. Security Requirements
+
+Local Security: Secure operation on local machine
+Data Protection: Encryption of sensitive configuration data
+Secure Defaults: Conservative default settings to prevent accidental exposure
+Vulnerability Management: Regular security audits of dependencies
+Linux Security: Adherence to Linux security practices and permissions model
+
+## 10. Self-Diagnostics
+
+System Health Checks:
+- Component status monitoring
+- Background service availability checks
+- Periodic self-tests of critical functionality
+- Dependency validation
+
+Resource Monitoring:
+- Memory usage tracking with leak detection
+- CPU utilization monitoring
+- Disk space and I/O performance checks
+- Network connectivity verification
+
+Performance Metrics:
+- Scan completion time tracking
+- Query performance monitoring
+- UI responsiveness measurement
+
+Automated Recovery:
+- Self-healing for common failure scenarios
+- Component restart capabilities
+- Diagnostic data collection for unresolved issues
+
+Diagnostic Reports:
+- Detailed system status reporting
+- Configuration validation
+- Historical performance trends
+- Issue detection with suggested resolutions
+
+## 11. Performance Profiling
+
+Runtime Analysis:
+- Function-level performance metrics
+- Call graph generation and analysis
+- Hot path identification
+- Memory allocation tracking
+
+Scan Performance:
+- Detailed timing of scan phases
+- Network throughput monitoring
+- Resource utilization during scans
+
+Database Performance:
+- Query execution time profiling
+- Index usage analysis
+- Transaction performance monitoring
+
+UI Performance:
+- Rendering time measurement
+- Event handling latency tracking
+- Asset loading optimization
+
+Bottleneck Detection:
+- Automated identification of performance bottlenecks
+- Suggestions for configuration optimization
+- Comparison with baseline performance
+
+Visualization:
+- Performance timeline visualization
+- Resource usage graphs
+- Comparative performance analysis across versions
+
+Export Capabilities:
+- Performance report generation
+- Raw profiling data export for external analysis
+
+## 12. Testing Requirements
+
+Unit Testing: Comprehensive test suite for all core components
+Integration Testing: End-to-end tests for primary workflows
+Performance Testing: Benchmarks for scanning operations and data processing
+Installation Testing: Automated tests for installation and update processes
+Resource Usage Tests: Verify memory and CPU usage stays within acceptable limits
+Test Automation: CI/CD pipeline for automated testing on all supported Linux distributions
+
+## 13. Documentation Requirements
+
+Installation Guide: Clear instructions for installation and updating on supported Linux distributions
+User Documentation: Comprehensive user manual with examples
+Developer Guide: Documentation for contributors
+API Documentation: Internal API documentation for extensibility
+Code Comments: Well-commented code following project standards
+Linux-Specific Documentation: Configuration and troubleshooting guides specific to Linux environments
+Offline Documentation: Access to documentation without internet connectivity

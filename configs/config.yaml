@@ -1,0 +1,48 @@
+# Panopticon Network Scanner Configuration
+
+# Server settings
+server:
+  port: 8080
+  host: "127.0.0.1"
+  allowedOrigins:
+    - "*"
+  readTimeout: 30
+  writeTimeout: 30
+  shutdownTimeout: 10
+
+# Scanner settings
+scanner:
+  frequency: "1h"
+  rateLimit: 1000
+  scanAllPorts: false
+  disablePing: true
+  targetNetwork: "192.168.1.0/24"
+  outputDir: "./data/scans"
+  outputRetentionDays: 30
+  compressOutput: true
+  enableScheduler: true
+  defaultTemplate: "default"
+  enableOSDetection: true
+  enableVersionDetection: true
+
+# Database settings
+database:
+  path: "./data/panopticon.db"
+  backupDir: "./data/backups"
+  backupFrequency: "168h"
+  optimizeFrequency: "24h"
+  dataRetentionDays: 730
+  maxConnections: 10
+  enableForeignKeys: true
+  journalMode: "WAL"
+  synchronousMode: "NORMAL"
+
+# Logging settings
+logging:
+  level: "debug"
+  format: "console"
+  outputPath: "./data/logs/panopticon.log"
+  maxSize: 10
+  maxBackups: 5
+  maxAge: 30
+  compress: true
